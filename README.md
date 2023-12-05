@@ -16,10 +16,10 @@ To run a Docker image, run `docker run -d -p 3000:3000 iconizza/api` (change fir
 
 NPM commands for working with Docker images:
 
--   `pnpm run docker:build` - builds Docker image.
--   `pnpm run docker:start` - starts Docker container on port 3000.
--   `pnpm run docker:stop` - stops all Iconizza API Docker containers.
--   `pnpm run docker:cleanup` - removes all unused Iconizza API Docker containers.
+-   `npm run docker:build` - builds Docker image.
+-   `npm run docker:start` - starts Docker container on port 3000.
+-   `npm run docker:stop` - stops all Iconizza API Docker containers.
+-   `npm run docker:cleanup` - removes all unused Iconizza API Docker containers.
 
 There is no command to remove unused images because of Docker limitations. You need to do it manually from Docker Desktop or command line.
 
@@ -28,14 +28,14 @@ There is no command to remove unused images because of Docker limitations. You n
 First, you need to install NPM dependencies and run build script:
 
 ```
-pnpm install
-pnpm run build
+npm install
+npm run build
 ```
 
 Then you can start server:
 
 ```
-pnpm run start
+npm run start
 ```
 
 By default, server will:
@@ -63,7 +63,7 @@ HTTPS is not supported. It is a very resource intensive process, better handled 
 There are several ways to change configuration:
 
 -   Editing files in `src/config/`, then rebuilding script. This is required for some advanced options, such as using API with custom icons.
--   Using environment variables, such as `PORT=3100 pnpm run start`.
+-   Using environment variables, such as `PORT=3100 npm run start`.
 -   Using `.env` file to store environment variables.
 
 ### Env options

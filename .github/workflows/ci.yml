@@ -1,32 +1,30 @@
 name: ci
 
 on:
-  push:
-    branches:
-      - main
-      - next
-  pull_request:
-    branches:
-      - main
-      - next
+    push:
+        branches:
+            - main
+            - next
+    pull_request:
+        branches:
+            - main
+            - next
 
 jobs:
-  ci:
-    runs-on: ubuntu-latest
+    ci:
+        runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v3
+        steps:
+            - uses: actions/checkout@v3
+            - uses: actions/setup-node@v3
+              with:
+                  node-version: 18
 
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 18
-          cache: 'pnpm'
+            - name: 📦 Install dependencies
+              run: npm ci
 
-      - name: 📦 Install dependencies
-        run: pnpm install
+            - name: 🚧 Build project
+              run: npm run build
 
-      - name: 🚧 Build project
-        run: pnpm run build
-
-      - name: 🧪 Test project
-        run: pnpm run test
+            - name: 🧪 Test project
+              run: npm run test
