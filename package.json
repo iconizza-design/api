@@ -1,0 +1,42 @@
+{
+	"name": "@iconizza/api",
+	"description": "Iconizza API",
+	"author": "Dennis Ollhoff",
+	"license": "MIT",
+	"private": true,
+	"version": "0.0.0",
+	"bugs": "https://github.com/iconizza-design/api/issues",
+	"homepage": "https://github.com/iconizza/api",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/iconizza-design/api.git"
+	},
+	"packageManager": "pnpm@8.11.0",
+	"engines": {
+		"node": ">=16.15.0"
+	},
+	"scripts": {
+		"build": "tsc -b",
+		"test": "vitest --config vitest.config.mjs",
+		"start": "node --expose-gc lib/index.js",
+		"docker:build": "./docker.sh",
+		"docker:start": "docker run -d -p 3000:3000 iconizza/api",
+		"docker:stop": "docker ps -q --filter ancestor=iconizza/api | xargs -r docker stop",
+		"docker:cleanup": "docker ps -q -a --filter ancestor=iconizza/api | xargs -r docker rm",
+		"docker:publish": "docker push iconizza/api"
+	},
+	"dependencies": {
+		"@fastify/formbody": "^7.4.0",
+		"@iconizza/tools": "^0.0.1",
+		"@iconizza/types": "^0.0.2",
+		"@iconizza/utils": "^0.0.2",
+		"dotenv": "^16.0.3",
+		"fastify": "^4.17.0"
+	},
+	"devDependencies": {
+		"@types/jest": "^29.5.1",
+		"@types/node": "^18.16.12",
+		"typescript": "^5.0.4",
+		"vitest": "^0.31.1"
+	}
+}
